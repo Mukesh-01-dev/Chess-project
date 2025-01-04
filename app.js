@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
+io.on("connection", (uniqueSocket) => {
+    console.log("connected");
+});
+
 server.listen(3000, () => {
     console.log("Server has started on port 3000");
 });
