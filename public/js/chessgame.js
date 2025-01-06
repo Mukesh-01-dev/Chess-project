@@ -38,15 +38,30 @@ const renderBoard = () => {
         });
 
         pieceElement.addEventListener("dragged", (e) => {
-            draggedPiece = null;
-            sourceSquare = null;
+          draggedPiece = null;
+          sourceSquare = null;
         });
 
         sqaureElement.appendChild(pieceElement);
       }
+
+      sqaureElement.addEventListener("dragover", (e) => {
+        e.preventDefault();
+      });
+
+      sqaureElement.addEventListener("drop", (e) => {
+        e.preventDefault();
+        if (draggedPiece) {
+          const targetSource = {
+            row: parseInt(sqaureElement.dataset.row),
+            col: parseInt(sqaureElement.dataset.col),
+          };
+
+          handleMove(sourceSquare, targetSource);
+        }
+      });
     });
   });
-  
 };
 
 const handleMove = () => {};
