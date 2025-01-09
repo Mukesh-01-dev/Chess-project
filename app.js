@@ -3,6 +3,7 @@ const socket = require("socket.io");
 const http = require("http");
 const { Chess } = require("chess.js");
 const path = require("path");
+const port = 3000;
 
 const app = express();
 
@@ -62,6 +63,6 @@ io.on("connection", (uniqueSocket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server has started on port 3000");
+server.listen(port, () => {
+  console.log("Server has started on port: " + port);
 });
